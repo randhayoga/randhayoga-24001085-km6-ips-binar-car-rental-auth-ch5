@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Fleets.init(
     {
-      id: DataTypes.INTEGER,
       car_trims_id: DataTypes.INTEGER,
       plate: DataTypes.STRING,
       availableAt: DataTypes.STRING,
