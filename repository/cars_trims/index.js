@@ -42,6 +42,15 @@ exports.getCars_Trim = async (id) => {
 };
 
 exports.setCars_Trim = async (payload) => {
+  if (payload.image) {
+    const { image } = payload;
+    image.publicId = crypto.randomBytes(16).toString("hex");
+    image.name = `${image.publicId}${path.parse(image.name).ext}`;
+
+    const imageUpload = await uploader(image);
+    payload.image = imageUpload.secure_url;
+  }
+
   const data = await cars_trims.create(payload);
 
   const key = `cars_trims:${data.id}`;
@@ -52,6 +61,15 @@ exports.setCars_Trim = async (payload) => {
 
 exports.putCars_Trim = async (id, payload) => {
   const key = `cars_trims:${id}`;
+
+  if (payload.image) {
+    const { image } = payload;
+    image.publicId = crypto.randomBytes(16).toString("hex");
+    image.name = `${image.publicId}${path.parse(image.name).ext}`;
+
+    const imageUpload = await uploader(image);
+    payload.image = imageUpload.secure_url;
+  }
 
   // update data in db
   await cars_trims.update(payload, {
