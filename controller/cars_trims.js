@@ -2,7 +2,7 @@ const cars_trimsUseCase = require("../usecase/cars_trims");
 
 exports.getCarsTrims = async (req, res, next) => {
   try {
-    const data = await cars_trimsUseCase.getCarsTrims();
+    const data = await cars_trimsUseCase.getCars_Trims();
 
     res.status(200).json({
       message: "Success",
@@ -16,7 +16,7 @@ exports.getCarsTrims = async (req, res, next) => {
 exports.getCarsTrim = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await cars_trimsUseCase.getCarsTrim(id);
+    const data = await cars_trimsUseCase.getCars_Trim(id);
 
     if (!data) {
       return next({
@@ -90,7 +90,7 @@ exports.setCarsTrim = async (req, res, next) => {
       });
     }
 
-    const data = await cars_trimsUseCase.setCarsTrim({
+    const data = await cars_trimsUseCase.setCars_Trim({
       base_car_id,
       year,
       transmission,
@@ -154,7 +154,7 @@ exports.putCarsTrim = async (req, res, next) => {
       });
     }
 
-    const data = await cars_trimsUseCase.putCarsTrim(id, {
+    const data = await cars_trimsUseCase.putCars_Trim(id, {
       year,
       transmission,
       options,
@@ -176,7 +176,7 @@ exports.putCarsTrim = async (req, res, next) => {
 exports.deleteCarsTrim = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await cars_trimsUseCase.deleteCarsTrim(id);
+    const data = await cars_trimsUseCase.deleteCars_Trim(id);
 
     res.status(200).json({
       message: "Success",
