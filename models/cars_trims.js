@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Cars_Trims.init(
     {
-      id: DataTypes.INTEGER,
       base_car_id: DataTypes.INTEGER,
       year: DataTypes.INTEGER,
       transmission: DataTypes.STRING,
@@ -18,8 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       specs: DataTypes.TEXT,
       capacity: DataTypes.INTEGER,
       rentPerDay: DataTypes.INTEGER,
-      createdAt: DataTypes.DATE,
-      editedAt: DataTypes.DATE,
       deletedAt: DataTypes.DATE,
     },
     {

@@ -11,12 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Base_Cars.init(
     {
-      id: DataTypes.INTEGER,
       manufacturer_id: DataTypes.INTEGER,
       model: DataTypes.STRING,
       type: DataTypes.STRING,
-      createdAt: DataTypes.DATE,
-      editedAt: DataTypes.DATE,
       deletedAt: DataTypes.DATE,
     },
     {
