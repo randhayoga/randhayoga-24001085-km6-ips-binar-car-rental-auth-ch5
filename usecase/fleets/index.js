@@ -1,4 +1,4 @@
-const fleetsRepo = require("../../repositories/fleets");
+const fleetsRepo = require("../../repository/fleets");
 
 exports.getFleets = async () => {
   const data = await fleetsRepo.getFleets();

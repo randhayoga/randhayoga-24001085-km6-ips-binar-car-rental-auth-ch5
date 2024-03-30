@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const path = require("path");
 const {
-  manufacturers,
+  Manufacturers: manufacturers,
   base_cars,
   cars_trims,
   fleets,
