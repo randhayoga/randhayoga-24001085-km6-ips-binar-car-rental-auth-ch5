@@ -14,8 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       availableAt: DataTypes.STRING,
       available: DataTypes.BOOLEAN,
       description: DataTypes.TEXT,
-      createdAt: DataTypes.DATE,
-      editedAt: DataTypes.DATE,
       deletedAt: DataTypes.DATE,
     },
     {
