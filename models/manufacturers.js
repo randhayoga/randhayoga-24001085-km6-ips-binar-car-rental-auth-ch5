@@ -10,10 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Manufacturers.init(
     {
-      id: DataTypes.INTEGER,
       name: DataTypes.STRING,
-      createdAt: DataTypes.DATE,
-      editedAt: DataTypes.DATE,
       deletedAt: DataTypes.DATE,
     },
     {

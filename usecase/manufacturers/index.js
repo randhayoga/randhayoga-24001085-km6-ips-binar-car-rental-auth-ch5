@@ -1,4 +1,4 @@
-const manufacturersRepo = require("../../repositories/manufacturers");
+const manufacturersRepo = require("../../repository/manufacturers");
 
 exports.getManufacturers = async () => {
   const data = await manufacturersRepo.getManufacturers();
