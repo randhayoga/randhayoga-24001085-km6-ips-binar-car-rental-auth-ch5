@@ -12,9 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: {
-            tableName: "Cars_Trims",
-          },
+          model: "Cars_Trims",
           key: "id",
         },
       },
@@ -38,13 +36,35 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      createdBy: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+      },
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      updatedBy: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+      },
       deletedAt: {
         type: Sequelize.DATE,
         allowNull: true,
+      },
+      deletedBy: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+        },
       },
     });
   },

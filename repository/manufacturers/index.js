@@ -1,12 +1,9 @@
-const crypto = require("crypto");
-const path = require("path");
 const {
   Manufacturers: manufacturers,
   Base_Cars: base_cars,
   Cars_Trims: cars_trims,
   Fleets: fleets,
 } = require("../../models");
-const { uploader } = require("../../helper/cloudinary");
 const { getCache, setCache, deleteCache } = require("../../helper/redis");
 const exp = require("constants");
 
@@ -33,7 +30,7 @@ exports.getManufacturer = async (id) => {
   if (data) {
     return data;
   } else {
-    // data is not in db, then get data from db
+    // data is not in cache, then get data from db
     data = await manufacturers.findAll({
       where: {
         id,

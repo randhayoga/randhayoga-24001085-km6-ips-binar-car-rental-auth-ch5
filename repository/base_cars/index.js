@@ -1,12 +1,8 @@
-const crypto = require("crypto");
-const path = require("path");
 const {
-  Manufacturers: manufacturers,
   Base_Cars: base_cars,
   Cars_Trims: cars_trims,
   Fleets: fleets,
 } = require("../../models");
-const { uploader } = require("../../helper/cloudinary");
 const { getCache, setCache, deleteCache } = require("../../helper/redis");
 const exp = require("constants");
 
