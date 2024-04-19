@@ -90,10 +90,10 @@ exports.putBase_Car = async (id, payload) => {
   }
 };
 
-exports.deleteBase_Car = async (id, deleter_id) => {
+exports.deleteBase_Car = async (id, deletedBy) => {
   const key = `base_cars:${id}`;
 
-  await base_cars.update({ deletedBy: deleter_id }, { where: { id } });
+  await base_cars.update({ deletedBy }, { where: { id } });
   await base_cars.destroy({ where: { id } });
   await deleteCache(key);
 

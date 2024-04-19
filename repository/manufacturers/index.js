@@ -99,10 +99,10 @@ exports.putManufacturer = async (id, payload) => {
   }
 };
 
-exports.deleteManufacturer = async (id, deleter_id) => {
+exports.deleteManufacturer = async (id, deletedBy) => {
   const key = `manufacturers:${id}`;
 
-  await manufacturers.update({ deletedBy: deleter_id }, { where: { id } });
+  await manufacturers.update({ deletedBy }, { where: { id } });
   await manufacturers.destroy({ where: { id } });
   await deleteCache(key);
 

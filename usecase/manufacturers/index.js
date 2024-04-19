@@ -21,7 +21,7 @@ exports.putManufacturer = async (id, payload) => {
   return data;
 };
 
-exports.deleteManufacturer = async (id, deleter_id) => {
-  const data = await manufacturersRepo.deleteManufacturer(id, deleter_id);
+exports.deleteManufacturer = async (id, deletedBy) => {
+  const data = await manufacturersRepo.deleteManufacturer(id, deletedBy);
   return data;
 };

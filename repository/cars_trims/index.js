@@ -97,10 +97,10 @@ exports.putCars_Trim = async (id, payload) => {
   }
 };
 
-exports.deleteCars_Trim = async (id, deleter_id) => {
+exports.deleteCars_Trim = async (id, deletedBy) => {
   const key = `cars_trims:${id}`;
 
-  await cars_trims.update({ deletedBy: deleter_id }, { where: { id } });
+  await cars_trims.update({ deletedBy }, { where: { id } });
   await cars_trims.destroy({ where: { id } });
   await deleteCache(key);
 
