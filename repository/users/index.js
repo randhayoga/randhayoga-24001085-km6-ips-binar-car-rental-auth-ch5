@@ -1,7 +1,8 @@
 const crypto = require("crypto");
 const path = require("path");
 const bcrypt = require("bcrypt");
-const { user } = require("../../models");
+const { Users: users } = require("../../models");
+const { Op } = require("sequelize");
 const { uploader } = require("../../helper/cloudinary");
 const { getCache, setCache, deleteCache } = require("../../helper/redis");
 
@@ -13,7 +14,7 @@ exports.getUserByID = async (id) => {
     return data;
   } else {
     // data is not in cache, then get data from db
-    data = await user.findAll({
+    data = await users.findAll({
       where: {
         id,
       },
@@ -37,9 +38,10 @@ exports.getUserByEmail = async (email) => {
     return data;
   } else {
     // data is not in cache, then get data from db
-    data = await user.findAll({
+    data = await users.findAll({
       where: {
         email,
+        role: "user",
       },
     });
 
@@ -61,10 +63,13 @@ exports.getAdminByEmail = async (email) => {
     return data;
   } else {
     // data is not in cache, then get data from db
-    data = await user.findAll({
+
+    data = await users.findAll({
       where: {
         email,
-        role: "admin" || "superadmin",
+        role: {
+          [Op.or]: ["admin", "superadmin"],
+        },
       },
     });
 
@@ -90,7 +95,7 @@ exports.setUser = async (payload) => {
   }
 
   // save to db
-  const data = await user.create(payload);
+  const data = await users.create(payload);
 
   // save to redis (email and id)
   const keyID = `user:${data.id}`;
@@ -115,7 +120,7 @@ exports.setAdmin = async (payload) => {
 
   // save to db
   payload.role = "admin";
-  const data = await user.create(payload);
+  const data = await users.create(payload);
 
   // save to redis (email and id)
   const keyID = `user:${data.id}`;

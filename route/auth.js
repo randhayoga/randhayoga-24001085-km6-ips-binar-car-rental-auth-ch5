@@ -13,12 +13,7 @@ router.post(
 );
 
 router.post("/loginUser", authController.loginUser);
-
-router.post(
-  "/loginAdmin",
-  authMiddleware(["admin", "superadmin"]),
-  authController.loginAdmin
-);
+router.post("/loginAdmin", authController.loginAdmin);
 
 router.get(
   "/profile",
