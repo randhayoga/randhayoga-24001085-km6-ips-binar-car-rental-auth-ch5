@@ -104,6 +104,7 @@ exports.setFleet = async (req, res, next) => {
 
 exports.putFleet = async (req, res, next) => {
   try {
+    const { id } = req.params;
     const { plate, availableAt, available, description } = req.body;
     const updatedBy = req.user.id;
 

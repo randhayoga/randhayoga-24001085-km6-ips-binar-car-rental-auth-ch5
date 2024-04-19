@@ -5,9 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Cars_Trims.hasMany(models.Fleets, { foreignKey: "car_trims_id" });
       Cars_Trims.belongsTo(models.Base_Cars, { foreignKey: "base_car_id" });
-      Cars_Trims.belongsTo(models.Manufacturers, {
-        foreignKey: "manufacturer_id",
-      });
       Cars_Trims.belongsTo(models.Users, {
         foreignKey: "createdBy",
       });

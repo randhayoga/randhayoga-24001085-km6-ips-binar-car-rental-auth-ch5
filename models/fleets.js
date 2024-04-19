@@ -4,9 +4,6 @@ module.exports = (sequelize, DataTypes) => {
   class Fleets extends Model {
     static associate(models) {
       Fleets.belongsTo(models.Cars_Trims, { foreignKey: "car_trims_id" });
-      Fleets.belongsTo(models.Manufacturers, {
-        foreignKey: "manufacturer_id",
-      });
       Fleets.belongsTo(models.Users, {
         foreignKey: "createdBy",
       });

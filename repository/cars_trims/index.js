@@ -61,6 +61,8 @@ exports.setCars_Trim = async (payload) => {
     payload.image = imageUpload.secure_url;
   }
 
+  console.log(payload);
+
   const data = await cars_trims.create(payload);
 
   const key = `cars_trims:${data.id}`;
