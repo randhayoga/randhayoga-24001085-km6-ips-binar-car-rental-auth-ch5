@@ -8,17 +8,7 @@ const { getCache, setCache, deleteCache } = require("../../helper/redis");
 const exp = require("constants");
 
 exports.getManufacturers = async () => {
-  const data = await manufacturers.findAll({
-    include: {
-      model: base_cars,
-      include: {
-        model: cars_trims,
-        include: {
-          model: fleets,
-        },
-      },
-    },
-  });
+  const data = await manufacturers.findAll();
 
   return data;
 };
@@ -34,15 +24,6 @@ exports.getManufacturer = async (id) => {
     data = await manufacturers.findAll({
       where: {
         id,
-      },
-      include: {
-        model: base_cars,
-        include: {
-          model: cars_trims,
-          include: {
-            model: fleets,
-          },
-        },
       },
     });
 
@@ -78,15 +59,6 @@ exports.putManufacturer = async (id, payload) => {
   const data = await manufacturers.findAll({
     where: {
       id,
-    },
-    include: {
-      model: base_cars,
-      include: {
-        model: cars_trims,
-        include: {
-          model: fleets,
-        },
-      },
     },
   });
 

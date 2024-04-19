@@ -1,9 +1,11 @@
+require("dotenv").config();
+
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const route = require("./route");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(

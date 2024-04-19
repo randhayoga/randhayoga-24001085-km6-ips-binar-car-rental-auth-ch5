@@ -1,0 +1,5 @@
+runtime: nodejs20
+service: default
+
+vpc_access_connector:
+  name: "projects/solar-bolt-420712/locations/asia-southeast2/connectors/connect-to-sql"
