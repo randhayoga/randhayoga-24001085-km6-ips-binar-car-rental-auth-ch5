@@ -34,6 +34,19 @@ exports.getFleet = async (req, res, next) => {
   }
 };
 
+exports.getAvailableFleets = async (req, res, next) => {
+  try {
+    const data = await fleetsUseCase.getAvailableFleets();
+
+    res.status(200).json({
+      message: "Success",
+      data: data,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.setFleet = async (req, res, next) => {
   try {
     const { car_trims_id, plate, availableAt, available, description } =

@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
+const auth = require("./auth");
 const manufacturers = require("./manufacturers");
 const base_cars = require("./base_cars");
 const cars_trims = require("./cars_trims");
 const fleets = require("./fleets");
 
+router.use("/auth", auth);
 router.use("/manufacturers", manufacturers);
 router.use("/base_cars", base_cars);
 router.use("/cars_trims", cars_trims);

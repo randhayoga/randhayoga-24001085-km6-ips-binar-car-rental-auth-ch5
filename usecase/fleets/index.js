@@ -10,6 +10,11 @@ exports.getFleet = async (id) => {
   return data;
 };
 
+exports.getAvailableFleets = async () => {
+  const data = await fleetsRepo.getAvailableFleets();
+  return data;
+};
+
 exports.setFleet = async (payload) => {
   const data = await fleetsRepo.setFleet(payload);
   return data;

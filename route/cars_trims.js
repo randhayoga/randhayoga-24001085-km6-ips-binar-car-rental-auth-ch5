@@ -2,16 +2,32 @@ const express = require("express");
 const router = express.Router();
 
 const cars_trimsController = require("../controller/cars_trims");
+const { authMiddleware } = require("../middleware/auth");
 
 router
   .route("/")
-  .get(cars_trimsController.getCarsTrims)
-  .post(cars_trimsController.setCarsTrim);
+  .get(
+    authMiddleware(["admin", "superadmin"]),
+    cars_trimsController.getCarsTrims
+  )
+  .post(
+    authMiddleware(["admin", "superadmin"]),
+    cars_trimsController.setCarsTrim
+  );
 
 router
   .route("/:id")
-  .get(cars_trimsController.getCarsTrim)
-  .put(cars_trimsController.putCarsTrim)
-  .delete(cars_trimsController.deleteCarsTrim);
+  .get(
+    authMiddleware(["admin", "superadmin"]),
+    cars_trimsController.getCarsTrim
+  )
+  .put(
+    authMiddleware(["admin", "superadmin"]),
+    cars_trimsController.putCarsTrim
+  )
+  .delete(
+    authMiddleware(["admin", "superadmin"]),
+    cars_trimsController.deleteCarsTrim
+  );
 
 module.exports = router;

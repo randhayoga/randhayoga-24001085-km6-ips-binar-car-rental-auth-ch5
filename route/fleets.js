@@ -2,16 +2,24 @@ const express = require("express");
 const router = express.Router();
 
 const fleetsController = require("../controller/fleets");
+const { authMiddleware } = require("../middleware/auth");
 
 router
   .route("/")
-  .get(fleetsController.getFleets)
-  .post(fleetsController.setFleet);
+  .get(authMiddleware(["admin", "superadmin"]), fleetsController.getFleets)
+  .post(authMiddleware(["admin", "superadmin"]), fleetsController.setFleet)
+  .get(
+    authMiddleware(["admin", "superadmin"]),
+    fleetsController.getAvailableFleets
+  );
 
 router
   .route("/:id")
-  .get(fleetsController.getFleet)
-  .put(fleetsController.putFleet)
-  .delete(fleetsController.deleteFleet);
+  .get(authMiddleware(["admin", "superadmin"]), fleetsController.getFleet)
+  .put(authMiddleware(["admin", "superadmin"]), fleetsController.putFleet)
+  .delete(
+    authMiddleware(["admin", "superadmin"]),
+    fleetsController.deleteFleet
+  );
 
 module.exports = router;
