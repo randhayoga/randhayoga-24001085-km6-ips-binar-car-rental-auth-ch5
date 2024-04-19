@@ -119,7 +119,7 @@ exports.putFleet = async (req, res, next) => {
       });
     }
 
-    const data = await fleetsUseCase.putFleet({
+    const data = await fleetsUseCase.putFleet(id, {
       plate,
       availableAt,
       available,
