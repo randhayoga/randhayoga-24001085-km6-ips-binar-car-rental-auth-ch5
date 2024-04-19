@@ -63,7 +63,6 @@ exports.getAdminByEmail = async (email) => {
     return data;
   } else {
     // data is not in cache, then get data from db
-
     data = await users.findAll({
       where: {
         email,
