@@ -2,4 +2,4 @@ runtime: nodejs20
 service: ips-binar-challenge5
 
 vpc_access_connector:
-  name: "projects/solar-bolt-420712/locations/asia-southeast2/connectors/connect-to-sql"
+  #name: "projects/solar-bolt-420712/locations/asia-southeast2/connectors/connect-to-sql"
