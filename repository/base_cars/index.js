@@ -2,6 +2,7 @@ const {
   Base_Cars: base_cars,
   Cars_Trims: cars_trims,
   Fleets: fleets,
+  Users: users,
 } = require("../../models");
 const { getCache, setCache, deleteCache } = require("../../helper/redis");
 const exp = require("constants");
@@ -89,9 +90,10 @@ exports.putBase_Car = async (id, payload) => {
   }
 };
 
-exports.deleteBase_Car = async (id) => {
+exports.deleteBase_Car = async (id, deleter_id) => {
   const key = `base_cars:${id}`;
 
+  await base_cars.update({ deletedBy: deleter_id }, { where: { id } });
   await base_cars.destroy({ where: { id } });
   await deleteCache(key);
 

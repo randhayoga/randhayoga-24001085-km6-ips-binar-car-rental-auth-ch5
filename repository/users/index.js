@@ -29,6 +29,7 @@ exports.getUserByID = async (id) => {
 };
 
 exports.getUserByEmail = async (email) => {
+  // For loggin in as regular user
   const key = `user:${email}`;
   let data = await getCache(key);
 
@@ -47,6 +48,31 @@ exports.getUserByEmail = async (email) => {
       return data[0];
     } else {
       throw new Error(`User is not found!`);
+    }
+  }
+};
+
+exports.getAdminByEmail = async (email) => {
+  // For logging in as admin or superadmin
+  const key = `user:${email}`;
+  let data = await getCache(key);
+
+  if (data) {
+    return data;
+  } else {
+    // data is not in cache, then get data from db
+    data = await user.findAll({
+      where: {
+        email,
+        role: "admin" || "superadmin",
+      },
+    });
+
+    if (data.length > 0) {
+      await setCache(key, data[0], 300);
+      return data[0];
+    } else {
+      throw new Error(`Admin is not found!`);
     }
   }
 };

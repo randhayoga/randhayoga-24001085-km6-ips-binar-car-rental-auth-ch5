@@ -121,6 +121,7 @@ exports.putFleet = async (id, payload) => {
 exports.deleteFleet = async (id) => {
   const key = `fleets:${id}`;
 
+  await fleets.update({ deletedBy: deleter_id }, { where: { id } });
   await fleets.destroy({ where: { id } });
   await deleteCache(key);
 
