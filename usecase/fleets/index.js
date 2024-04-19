@@ -21,7 +21,7 @@ exports.putFleet = async (id, payload) => {
   return data;
 };
 
-exports.deleteFleet = async (id) => {
-  const data = await fleetsRepo.deleteFleet(id);
+exports.deleteFleet = async (id, deleter_id) => {
+  const data = await fleetsRepo.deleteFleet(id, deleter_id);
   return data;
 };

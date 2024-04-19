@@ -21,7 +21,7 @@ exports.putBaseCar = async (id, payload) => {
   return data;
 };
 
-exports.deleteBaseCar = async (id) => {
-  const data = await base_carsRepo.deleteBase_Car(id);
+exports.deleteBaseCar = async (id, deleter_id) => {
+  const data = await base_carsRepo.deleteBase_Car(id, deleter_id);
   return data;
 };

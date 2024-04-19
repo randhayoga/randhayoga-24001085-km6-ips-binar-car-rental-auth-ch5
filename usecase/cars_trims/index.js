@@ -21,7 +21,7 @@ exports.putCars_Trim = async (id, payload) => {
   return data;
 };
 
-exports.deleteCars_Trim = async (id) => {
-  const data = await cars_trimsRepo.deleteCars_Trim(id);
+exports.deleteCars_Trim = async (id, deleter_id) => {
+  const data = await cars_trimsRepo.deleteCars_Trim(id, deleter_id);
   return data;
 };
