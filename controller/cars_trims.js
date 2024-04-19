@@ -46,6 +46,7 @@ exports.setCarsTrim = async (req, res, next) => {
       rentPerDay,
     } = req.body;
     const { image } = req.files;
+    const createdBy = req.user.id;
 
     if (!base_car_id || base_car_id === "") {
       return next({
@@ -99,6 +100,7 @@ exports.setCarsTrim = async (req, res, next) => {
       capacity,
       rentPerDay,
       image,
+      createdBy,
     });
 
     res.status(201).json({
@@ -116,6 +118,7 @@ exports.putCarsTrim = async (req, res, next) => {
     const { year, transmission, options, specs, capacity, rentPerDay } =
       req.body;
     const { image } = req.files;
+    const updatedBy = req.user.id;
 
     if (!year || year === "") {
       return next({
@@ -162,6 +165,7 @@ exports.putCarsTrim = async (req, res, next) => {
       capacity,
       rentPerDay,
       image,
+      updatedBy,
     });
 
     res.status(200).json({
@@ -176,7 +180,9 @@ exports.putCarsTrim = async (req, res, next) => {
 exports.deleteCarsTrim = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await cars_trimsUseCase.deleteCars_Trim(id);
+    const deletedBy = req.user.id;
+
+    const data = await cars_trimsUseCase.deleteCars_Trim(id, deletedBy);
 
     res.status(200).json({
       message: "Success",

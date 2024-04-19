@@ -37,6 +37,8 @@ exports.getBaseCar = async (req, res, next) => {
 exports.setBaseCar = async (req, res, next) => {
   try {
     const { manufacturer_id, model, type } = req.body;
+    const createdBy = req.user.id;
+
     if (!manufacturer_id || manufacturer_id === "") {
       return next({
         message: "Manufacturer ID is required!",
@@ -60,6 +62,7 @@ exports.setBaseCar = async (req, res, next) => {
       manufacturer_id,
       model,
       type,
+      createdBy,
     });
 
     res.status(201).json({
@@ -75,6 +78,7 @@ exports.putBaseCar = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { model, type } = req.body;
+    const updatedBy = req.user.id;
 
     if (!model || model === "") {
       return next({
@@ -92,6 +96,7 @@ exports.putBaseCar = async (req, res, next) => {
     const data = await base_carsUseCase.putBaseCar(id, {
       model,
       type,
+      updatedBy,
     });
 
     res.status(200).json({
@@ -106,7 +111,9 @@ exports.putBaseCar = async (req, res, next) => {
 exports.deleteBaseCar = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await base_carsUseCase.deleteBaseCar(id);
+    const deletedBy = req.user.id;
+
+    const data = await base_carsUseCase.deleteBaseCar(id, deletedBy);
 
     res.status(200).json({
       message: "Success",

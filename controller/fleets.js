@@ -38,6 +38,7 @@ exports.setFleet = async (req, res, next) => {
   try {
     const { car_trims_id, plate, availableAt, available, description } =
       req.body;
+    const createdBy = req.user.id;
 
     if (!car_trims_id || car_trims_id === "") {
       return next({
@@ -76,6 +77,7 @@ exports.setFleet = async (req, res, next) => {
       availableAt,
       available,
       description,
+      createdBy,
     });
 
     res.status(201).json({
@@ -90,6 +92,7 @@ exports.setFleet = async (req, res, next) => {
 exports.putFleet = async (req, res, next) => {
   try {
     const { plate, availableAt, available, description } = req.body;
+    const updatedBy = req.user.id;
 
     if (!plate || plate === "") {
       return next({
@@ -121,6 +124,7 @@ exports.putFleet = async (req, res, next) => {
       availableAt,
       available,
       description,
+      updatedBy,
     });
 
     res.status(201).json({
@@ -135,7 +139,9 @@ exports.putFleet = async (req, res, next) => {
 exports.deleteFleet = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await fleetsUseCase.deleteFleet(id);
+    const deletedBy = req.user.id;
+
+    const data = await fleetsUseCase.deleteFleet(id, deletedBy);
 
     res.status(200).json({
       message: "Success",

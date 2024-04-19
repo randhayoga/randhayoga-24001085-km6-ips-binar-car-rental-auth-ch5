@@ -37,6 +37,8 @@ exports.getManufacturer = async (req, res, next) => {
 exports.setManufacturer = async (req, res, next) => {
   try {
     const { name } = req.body;
+    const createdBy = req.user.id;
+
     if (!name || name === "") {
       return next({
         message: "Name is required!",
@@ -44,7 +46,10 @@ exports.setManufacturer = async (req, res, next) => {
       });
     }
 
-    const data = await manufacturersUseCase.setManufacturer({ name });
+    const data = await manufacturersUseCase.setManufacturer({
+      name,
+      createdBy,
+    });
 
     res.status(201).json({
       message: "Success",
@@ -59,6 +64,7 @@ exports.putManufacturer = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { name } = req.body;
+    const updatedBy = req.user.id;
 
     if (!name || name === "") {
       return next({
@@ -67,7 +73,10 @@ exports.putManufacturer = async (req, res, next) => {
       });
     }
 
-    const data = await manufacturersUseCase.putManufacturer(id, { name });
+    const data = await manufacturersUseCase.putManufacturer(id, {
+      name,
+      updatedBy,
+    });
 
     res.status(200).json({
       message: "Success",
@@ -81,7 +90,9 @@ exports.putManufacturer = async (req, res, next) => {
 exports.deleteManufacturer = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await manufacturersUseCase.deleteManufacturer(id);
+    const deletedBy = req.user.id;
+
+    const data = await manufacturersUseCase.deleteManufacturer(id, deletedBy);
 
     res.status(200).json({
       message: "Success",
