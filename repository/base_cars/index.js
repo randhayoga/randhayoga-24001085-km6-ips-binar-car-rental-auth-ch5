@@ -1,7 +1,6 @@
 const {
   Base_Cars: base_cars,
-  Cars_Trims: cars_trims,
-  Fleets: fleets,
+  Manufacturers: manufacturers,
   Users: users,
 } = require("../../models");
 const { getCache, setCache, deleteCache } = require("../../helper/redis");
@@ -10,10 +9,7 @@ const exp = require("constants");
 exports.getBase_Cars = async () => {
   const data = await base_cars.findAll({
     include: {
-      model: cars_trims,
-      include: {
-        model: fleets,
-      },
+      model: manufacturers,
     },
   });
 
@@ -33,10 +29,7 @@ exports.getBase_Car = async (id) => {
         id,
       },
       include: {
-        model: cars_trims,
-        include: {
-          model: fleets,
-        },
+        model: manufacturers,
       },
     });
 
@@ -74,10 +67,7 @@ exports.putBase_Car = async (id, payload) => {
       id,
     },
     include: {
-      model: cars_trims,
-      include: {
-        model: fleets,
-      },
+      model: manufacturers,
     },
   });
 

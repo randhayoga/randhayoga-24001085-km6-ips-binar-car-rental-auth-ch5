@@ -1,6 +1,10 @@
 const crypto = require("crypto");
 const path = require("path");
-const { Cars_Trims: cars_trims, Fleets: fleets } = require("../../models");
+const {
+  Cars_Trims: cars_trims,
+  Base_Cars: base_cars,
+  Manufacturers: manufacturers,
+} = require("../../models");
 const { uploader } = require("../../helper/cloudinary");
 const { getCache, setCache, deleteCache } = require("../../helper/redis");
 const exp = require("constants");
@@ -8,7 +12,10 @@ const exp = require("constants");
 exports.getCars_Trims = async () => {
   const data = await cars_trims.findAll({
     include: {
-      model: fleets,
+      model: base_cars,
+      include: {
+        model: manufacturers,
+      },
     },
   });
 
@@ -28,7 +35,10 @@ exports.getCars_Trim = async (id) => {
         id,
       },
       include: {
-        model: fleets,
+        model: base_cars,
+        include: {
+          model: manufacturers,
+        },
       },
     });
 
@@ -84,7 +94,10 @@ exports.putCars_Trim = async (id, payload) => {
       id,
     },
     include: {
-      model: fleets,
+      model: base_cars,
+      include: {
+        model: manufacturers,
+      },
     },
   });
 
