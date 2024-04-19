@@ -55,6 +55,25 @@ exports.getFleet = async (id) => {
   }
 };
 
+exports.getAvailableFleets = async () => {
+  const data = await fleets.findAll({
+    where: {
+      available: true,
+    },
+    include: {
+      model: cars_trims,
+      include: {
+        model: base_cars,
+        include: {
+          model: manufacturers,
+        },
+      },
+    },
+  });
+
+  return data;
+};
+
 exports.setFleet = async (payload) => {
   const data = await fleets.create(payload);
 

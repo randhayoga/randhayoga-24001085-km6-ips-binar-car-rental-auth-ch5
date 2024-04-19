@@ -74,3 +74,28 @@ exports.setUser = async (payload) => {
 
   return data;
 };
+
+exports.setAdmin = async (payload) => {
+  payload.password = bcrypt.hashSync(payload.password, 10);
+
+  if (payload.photo) {
+    const { photo } = payload;
+    photo.publicId = crypto.randomBytes(16).toString("hex");
+    photo.name = `${photo.publicId}${path.parse(photo.name).ext}`;
+
+    const imageUpload = await uploader(photo);
+    payload.photo = imageUpload.secure_url;
+  }
+
+  // save to db
+  payload.role = "admin";
+  const data = await user.create(payload);
+
+  // save to redis (email and id)
+  const keyID = `user:${data.id}`;
+  const keyEmail = `user:${data.email}`;
+  await setCache(keyID, data, 300);
+  await setCache(keyEmail, data, 300);
+
+  return data;
+};

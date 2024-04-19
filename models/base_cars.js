@@ -7,6 +7,15 @@ module.exports = (sequelize, DataTypes) => {
       Base_Cars.belongsTo(models.Manufacturers, {
         foreignKey: "manufacturer_id",
       });
+      Base_Cars.belongsTo(models.Users, {
+        foreignKey: "createdBy",
+      });
+      Base_Cars.belongsTo(models.Users, {
+        foreignKey: "updatedBy",
+      });
+      Base_Cars.belongsTo(models.Users, {
+        foreignKey: "deletedBy",
+      });
     }
   }
   Base_Cars.init(
@@ -14,12 +23,18 @@ module.exports = (sequelize, DataTypes) => {
       manufacturer_id: DataTypes.INTEGER,
       model: DataTypes.STRING,
       type: DataTypes.STRING,
+      createdAt: DataTypes.DATE,
+      createdBy: DataTypes.INTEGER,
+      updatedAt: DataTypes.DATE,
+      updatedBy: DataTypes.INTEGER,
       deletedAt: DataTypes.DATE,
+      deletedBy: DataTypes.INTEGER,
     },
     {
       sequelize,
       modelName: "Base_Cars",
       paranoid: true,
+      timestamps: true,
     }
   );
   return Base_Cars;
