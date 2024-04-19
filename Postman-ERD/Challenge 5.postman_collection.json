@@ -1,0 +1,986 @@
+{
+	"info": {
+		"_postman_id": "a6c6dc0b-b29d-474d-8c8a-c4ae82bcbc28",
+		"name": "Challenge 5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30803893"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User (Elevate Ke Superadmin Manual w Dbeaver)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "usersatu@binar.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "usersatu",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "User Satu",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/randha/Downloads/profileImage/profile1.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/registerUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"registerUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI0MDYwLCJleHAiOjE3MTM1Mjc2NjB9.NESBfj0WTMB_N3FcinLvUtOz74ElFyaEPTF5mDdS1ek",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "userdua@binar.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "userdua",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "User Dua",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/randha/Downloads/profileImage/profile2.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/registerAdmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"registerAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User Biasa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "usertiga@binar.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "usertiga",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "User Tiga",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/randha/Downloads/profileImage/profile3.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/registerUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"registerUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usersatu@binar.com\",\n    \"password\": \"usersatu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/loginUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"loginUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"userdua@binar.com\",\n    \"password\": \"userdua\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/loginAdmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"loginAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI0MDYwLCJleHAiOjE3MTM1Mjc2NjB9.NESBfj0WTMB_N3FcinLvUtOz74ElFyaEPTF5mDdS1ek",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/auth/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manufacturers",
+			"item": [
+				{
+					"name": "New Manufacturer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Toyota\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/manufacturers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Manufacturers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/manufacturers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Manufacturer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/manufacturers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Manufacturer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Atoyot\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/manufacturers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Manufacturer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/manufacturers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Merek mobil"
+		},
+		{
+			"name": "Base Cars",
+			"item": [
+				{
+					"name": "New Base Car",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"manufacturer_id\": 1,\n    \"model\": \"GR86\",\n    \"type\": \"Coupe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/base_cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base_cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Base Cars",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/base_cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base_cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Base Car",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/base_cars/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base_cars",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Base Car",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"GR Corolla\",\n    \"type\": \"Hatchback\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/base_cars/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base_cars",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Base Car",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/base_cars/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base_cars",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Tipe dasar dari Mobil sebelum terdapat fitur-fitur opsional"
+		},
+		{
+			"name": "Cars Trims",
+			"item": [
+				{
+					"name": "New Cars Trim",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzNTI1NjU0LCJleHAiOjE3MTM1MjkyNTR9.7D2fB2Qh7ltclpmhHxuyzKB_Zbfdd2BgmajQS87qGmY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "base_car_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2023",
+									"type": "text"
+								},
+								{
+									"key": "transmission",
+									"value": "\"Manual\"",
+									"type": "text"
+								},
+								{
+									"key": "options",
+									"value": "\"Cruise Control, Tinted Glass, AM/FM Stereo\"",
+									"type": "text"
+								},
+								{
+									"key": "specs",
+									"value": "\"Brake assist,Leather-wrapped shift knob,Glove box lamp,Air conditioning w/in-cabin microfilter,Dual-stage front airbags w/occupant classification system\"",
+									"type": "text"
+								},
+								{
+									"key": "capacity",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "rentPerDay",
+									"value": "860000",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/randha/Downloads/profileImage/car86.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cars_trims",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars_trims"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cars Trims",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/cars_trims",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars_trims"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cars Trim",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/cars_trims/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars_trims",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Cars Trim",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "year",
+									"value": "2023",
+									"type": "text"
+								},
+								{
+									"key": "transmission",
+									"value": "\"DCT\"",
+									"type": "text"
+								},
+								{
+									"key": "options",
+									"value": "\"Eurobeat\"",
+									"type": "text"
+								},
+								{
+									"key": "specs",
+									"value": "\"Short shifter\"",
+									"type": "text"
+								},
+								{
+									"key": "capacity",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "rentPerDay",
+									"value": "1860000",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/randha/Downloads/toyota-corolla-gazoo-racing-british-touring-car-championship-03-1616480851.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cars_trims/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars_trims",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cars Trim",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/cars_trims/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars_trims",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Tipe mobil setelah mendapatkan fitur-fitur opsional"
+		},
+		{
+			"name": "Fleets",
+			"item": [
+				{
+					"name": "New Fleet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"car_trims_id\": 1,\n    \"plate\": \"TGR-8686\",\n    \"availableAt\": \"2022-03-25T15:49:05.563Z\",\n    \"available\": true,\n    \"description\": \" Manual. Rear wheel drive. Pure sport car experience.\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/manufacturers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fleets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/classes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fleet",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/classes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"classes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Fleet",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"BE-1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/classes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"classes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fleet",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEzNTI3NDY4LCJleHAiOjE3MTM1MzEwNjh9.VGwoYSbs2D2oKFuaQkm_PtU0n3ngL0PYRJZGgVJMgU0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/classes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"classes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Mobil rental (ada plat nomornya)"
+		}
+	]
+}
