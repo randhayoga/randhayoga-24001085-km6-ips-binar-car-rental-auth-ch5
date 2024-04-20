@@ -7,8 +7,9 @@ const { authMiddleware } = require("../middleware/auth");
 router
   .route("/")
   .get(authMiddleware(["admin", "superadmin"]), fleetsController.getFleets)
-  .post(authMiddleware(["admin", "superadmin"]), fleetsController.setFleet)
-  .get(fleetsController.getAvailableFleets);
+  .post(authMiddleware(["admin", "superadmin"]), fleetsController.setFleet);
+
+router.route("/available").get(fleetsController.getAvailableFleets);
 
 router
   .route("/:id")
