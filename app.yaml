@@ -2,4 +2,4 @@ runtime: nodejs20
 # service: ips-binar-challenge5
 
 vpc_access_connector:
-  name: "projects/kampus-merdeka-6-ips/locations/asia-southeast2/connectors/connect-sql"
+  name: "projects/kampus-merdeka-6-ips/locations/asia-southeast2/connectors/connect-to-sql"
