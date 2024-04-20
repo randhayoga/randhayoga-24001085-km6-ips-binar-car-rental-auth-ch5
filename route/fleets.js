@@ -8,10 +8,7 @@ router
   .route("/")
   .get(authMiddleware(["admin", "superadmin"]), fleetsController.getFleets)
   .post(authMiddleware(["admin", "superadmin"]), fleetsController.setFleet)
-  .get(
-    authMiddleware(["admin", "superadmin"]),
-    fleetsController.getAvailableFleets
-  );
+  .get(fleetsController.getAvailableFleets);
 
 router
   .route("/:id")
